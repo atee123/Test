@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Healthapp</string>
+    <string name="logintextbutton">Log In</string>
+    <string name="latertextbutton">Later</string>
+    <string name="createtextbutton">Create New</string>
+    <string name="BirthYear">BirthYears</string>
+    <string name="Heighttext">Heighttext</string>
+    <string name="Weighttext">Weighttext</string>
+    <string-array name="namesage">
+        <item> 1998 </item>
+        <item> 1997 </item>
+        <item> 1996 </item>
+        <item> 1995 </item>
+    </string-array>
+
+    <string-array name="select_height">
+        <item> 9' 11" </item>
+        <item> 9' 11" </item>
+        <item> 9' 11" </item>
+        <item> 9' 11" </item>
+    </string-array>
+
+    <string-array name="select_weight">
+        <item> 5 </item>
+        <item> 6 </item>
+        <item> 7 </item>
+        <item> 7 </item>
+    </string-array>
+</resources>
