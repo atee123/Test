@@ -6,24 +6,23 @@
     <string name="BirthYear">BirthYears</string>
     <string name="Heighttext">Heighttext</string>
     <string name="Weighttext">Weighttext</string>
-    <string-array name="namesage">
-        <item> 1998 </item>
-        <item> 1997 </item>
+    <string name="hello_world">Number_view</string>
+    <string name="show_age"> Age View </string>
+
+
+    <string-array name="number_pick">
+        <item> 1990 </item>
+        <item> 1991 </item>
         <item> 1996 </item>
-        <item> 1995 </item>
+        <item> 1998 </item>
+        <item> 1989 </item>
     </string-array>
 
-    <string-array name="select_height">
-        <item> 9' 11" </item>
-        <item> 9' 11" </item>
-        <item> 9' 11" </item>
-        <item> 9' 11" </item>
-    </string-array>
-
-    <string-array name="select_weight">
-        <item> 5 </item>
-        <item> 6 </item>
-        <item> 7 </item>
-        <item> 7 </item>
+    <string-array name="date_choice">
+        <item> 1990 </item>
+        <item> 1991 </item>
+        <item> 1996 </item>
+        <item> 1998 </item>
+        <item> 1989 </item>
     </string-array>
 </resources>

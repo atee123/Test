@@ -1,14 +1,10 @@
 package com.fitness.healthapp;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Button;
 import android.content.Intent;
-import android.app.Activity;
-import android.util.Log;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     public Button btn1;
     public Button btn2;
     public Button btn3;
+    public Button btn4;
 
     public void loginbtn()
     {
@@ -66,6 +63,22 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+    public void setDate()
+    {
+        btn4 = (Button)findViewById(R.id.CreateDate);
+
+        btn4.setOnClickListener(
+                new Button.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        Intent intent = new Intent(MainActivity.this, Date.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+        );
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,5 +86,6 @@ public class MainActivity extends AppCompatActivity {
         loginbtn();
         laterbtn();
         createbtn();
+        setDate();
     }
 }

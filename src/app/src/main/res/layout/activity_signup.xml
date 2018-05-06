@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,15 +75,24 @@
                 android:id="@+id/BirthYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="140dp"
+                android:layout_marginRight="60dp"
                 android:text="Birth Year" />
+
+            <TextView
+                android:id="@+id/Birthdisp"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginRight="0dp" />
 
             <Spinner
                 android:id="@+id/spinner1"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp" />
-
+                android:layout_marginLeft="0dp"
+                android:spinnerMode="dialog"
+                android:layout_gravity="center"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
@@ -95,16 +105,48 @@
 
             <TextView
                 android:id="@+id/Heighttext"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="160dp"
+                android:layout_marginRight="125dp"
                 android:text="Height " />
+
+
+            <TextView
+                android:id="@+id/Heightdisp"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp" />
+
+            <TextView
+                android:id="@+id/height_feet"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:text="'"/>
+
+            <TextView
+                android:id="@+id/Height_disp"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/Height_inch"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:text="''"/>
 
             <Spinner
                 android:id="@+id/spinner2"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="39dp">
+                android:layout_marginLeft="0dp">
 
             </Spinner>
 

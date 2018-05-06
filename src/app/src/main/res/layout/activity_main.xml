@@ -42,7 +42,7 @@
         android:layout_marginTop="202dp"
         android:paddingBottom="2dp"
         android:paddingTop="2dp"
-        android:text="@string/logintextbutton" />
+        android:text="Log In" />
 
     <Button
         android:id="@+id/laterbutton"
@@ -51,7 +51,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="206dp"
-        android:text="@string/latertextbutton" />
+        android:text="Later" />
 
     <TextView
         android:id="@+id/textView2"
@@ -69,5 +69,15 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:text="@string/createtextbutton" />
+        android:text="Create Now" />
+
+    <Button
+        android:id="@+id/CreateDate"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="Set Date" />
+
 </RelativeLayout>
