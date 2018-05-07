@@ -4,9 +4,12 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,9 +22,8 @@ import static com.fitness.healthapp.R.id.spinner3;
 public class SignupActivity extends AppCompatActivity{
     private static TextView tv ;
     private static TextView tv1 ;
-    private static TextView tv2 ;
     private static TextView tv3 ;
-    private static TextView tv4 ;
+    private static TextView tv2;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState)
@@ -38,9 +40,8 @@ public class SignupActivity extends AppCompatActivity{
         tv = (TextView)findViewById(R.id.Birthdisp);
 
         tv1 = (TextView)findViewById( R.id.Heightdisp );
-        tv2 = (TextView)findViewById( R.id.height_feet );
         tv3 = (TextView)findViewById( R.id.Height_disp );
-        tv4 = (TextView)findViewById( R.id.Height_inch );
+        tv2 = (TextView)findViewById( R.id.Weight_disp );
 
 
         startTime.setOnTouchListener(new View.OnTouchListener(){
@@ -55,6 +56,7 @@ public class SignupActivity extends AppCompatActivity{
         });
 
         setHeight.setOnTouchListener( new View.OnTouchListener() {
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
@@ -63,8 +65,51 @@ public class SignupActivity extends AppCompatActivity{
                 View dialogView = inflater.inflate(R.layout.height_dialog,null);
                 builder.setTitle( "Height Set" );
                 builder.setView(dialogView);
+                final EditText et = (EditText) dialogView.findViewById( R.id.feetText );
+                final EditText et1 = (EditText) dialogView.findViewById( R.id.inchText );
+                final AlertDialog dialog = builder.create();
 
-                builder.setPositiveButton( android.R.string.ok, new DialogInterface.OnClickListener() {
+                et.addTextChangedListener( new TextWatcher() {
+                    private EditText myText;
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                    {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s)
+                    {
+                        String str = et.getText().toString();
+                        tv1.setText( str );
+                    }
+                } );
+
+                et1.addTextChangedListener( new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        String str = et1.getText().toString();
+                        tv3.setText( str );
+                    }
+                } );
+
+                    builder.setPositiveButton( android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -74,7 +119,7 @@ public class SignupActivity extends AppCompatActivity{
                 builder.setNegativeButton( android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        dialog.cancel();
                     }
                 } );
 
@@ -91,6 +136,28 @@ public class SignupActivity extends AppCompatActivity{
                 View dialogView = inflater.inflate(R.layout.weight_dialog,null);
                 builder.setTitle( "Height Set" );
                 builder.setView(dialogView);
+
+                final EditText et3 = (EditText)dialogView.findViewById( R.id.weightText );
+                final AlertDialog dialog = builder.create();
+
+                et3.addTextChangedListener( new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                        String str = et3.getText().toString();
+                        tv2.setText( str );
+                    }
+                } );
 
                 builder.setPositiveButton( android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
@@ -113,6 +180,9 @@ public class SignupActivity extends AppCompatActivity{
         } );
 
     }
+
+
+
 
 
     public AlertDialog picker(){
