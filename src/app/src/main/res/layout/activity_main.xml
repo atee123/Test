@@ -1,83 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScrollView"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@mipmap/ic_launcher" />
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="88dp"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@mipmap/ic_launcher"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="166dp"
-        android:text="if you have FWR account click on login" />
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@mipmap/ic_launcher"/>
 
-    <Button
-        android:id="@+id/loginbutton"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="202dp"
-        android:paddingBottom="2dp"
-        android:paddingTop="2dp"
-        android:text="Log In" />
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="if you have FWR account click on login"
+                android:textSize="16dp" />
 
-    <Button
-        android:id="@+id/laterbutton"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="206dp"
-        android:text="Later" />
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/loginbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:layout_marginBottom="20dp">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="166dp"
-        android:text="if you don't have account" />
+            </android.support.v7.widget.AppCompatButton>
 
-    <Button
-        android:id="@+id/createbutton"
-        android:layout_width="234dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
-        android:text="Create Now" />
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/laterbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Later"
+                android:layout_marginBottom="20dp">
 
-    <Button
-        android:id="@+id/CreateDate"
-        android:layout_width="234dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:text="Set Date" />
+            </android.support.v7.widget.AppCompatButton>
 
-</RelativeLayout>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textView2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="if you don't have account"
+                android:textSize="16dp" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/createbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Now"
+                android:layout_marginBottom="20dp">
+
+            </android.support.v7.widget.AppCompatButton>
+
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/CreateDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set Date"
+                android:layout_marginBottom="20dp">
+
+            </android.support.v7.widget.AppCompatButton>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+</android.support.v4.widget.NestedScrollView>

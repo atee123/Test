@@ -1,205 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@color/colorBackground"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    tools:context=".LoginActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="25dp"
-        android:paddingRight="20dp"
-        android:paddingTop="30dp"
-        >
+        android:orientation="vertical">
 
         <android.support.v7.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:src="@android:color/holo_blue_bright" />
+            android:layout_marginTop="40dp"
+            />
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="40dp">
 
-            <EditText
-                android:id="@+id/input_name"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
-                android:inputType="textPersonName" />
+                android:hint="@string/hint_name"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="20dp">
 
-            <EditText
-                android:id="@+id/input_email"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:hint="@string/hint_email"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="20dp">
 
-            <EditText
-                android:id="@+id/text_input_password_toggle"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword" />
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
-        <LinearLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/textInputEditTextConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_confirm_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/appCompatButtonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorTextHint"
+            android:text="@string/text_register" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appCompatTextViewLoginLink"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/BirthYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="60dp"
-                android:text="Birth Year" />
-
-            <TextView
-                android:id="@+id/Birthdisp"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="75dp"
-                android:layout_marginRight="0dp" />
-
-            <Spinner
-                android:id="@+id/spinner1"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:spinnerMode="dialog"
-                android:layout_gravity="center"
-                android:textAlignment="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="30dp">
-
-            <TextView
-                android:id="@+id/Heighttext"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="150dp"
-                android:text="Height " />
-
-
-            <TextView
-                android:id="@+id/Heightdisp"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/height_feet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="0dp"
-                android:text="'"/>
-
-            <TextView
-                android:id="@+id/Height_disp"
-                android:layout_width="10dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="0dp"
-                android:text=""
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/Height_inch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="5dp"
-                android:text="''"/>
-
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp">
-
-            </Spinner>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:text="Already a member? Login"
+            android:textSize="16dp" />
+    </android.support.v7.widget.LinearLayoutCompat>
 
-            <TextView
-                android:id="@+id/Weighttext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="160dp"
-                android:text="Weight " />
-
-            <TextView
-                android:id="@+id/Weight_disp"
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="0dp"
-                android:text=""/>
-
-            <Spinner
-                android:id="@+id/spinner3"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp">
-
-            </Spinner>
-
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/Signupbutton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:layout_marginBottom="20dp"/>
-
-
-    </LinearLayout>
-
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>
 
 
