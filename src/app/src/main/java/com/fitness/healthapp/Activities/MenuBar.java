@@ -87,6 +87,12 @@ public class MenuBar extends AppCompatActivity implements NavigationView.OnNavig
 
         } else if (id == R.id.nav_manage) {
 
+        } else if (id == R.id.nav_contact) {
+
+            MapFragment mapFragment = new MapFragment();
+
+            android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace( R.id.mainLayout, mapFragment ).commit();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

@@ -53,6 +53,13 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
+
+            <CheckBox android:layout_below="@+id/passwordview"
+                android:layout_width="wrap_content" android:text="Remember Password!"
+                android:layout_height="wrap_content" android:id="@+id/rempasswordcheckbox"
+                android:layout_x="23dp"
+                android:layout_y="200dp" />
+
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton

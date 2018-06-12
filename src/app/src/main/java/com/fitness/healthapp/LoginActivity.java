@@ -1,6 +1,8 @@
 package com.fitness.healthapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
@@ -10,10 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.fitness.healthapp.Activities.MenuBar;
 import com.fitness.healthapp.DataBase.DatabaseHelper;
 import com.fitness.healthapp.IndentValidation.Inputvalidation;
+
+import static android.provider.Telephony.Carriers.PASSWORD;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener
@@ -34,6 +39,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private Inputvalidation inputValidation;
     private DatabaseHelper databaseHelper;
+    private CheckBox checkme;
+
+    private static final String SPF_NAME = "vidslogin"; //  <--- Add this
+    private static final String USERNAME = "username";  //  <--- To save username
+    private static final String PASSWORD = "password";  //  <--- To save password
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +73,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         textViewLinkRegister = (AppCompatTextView) findViewById(R.id.textViewLinkRegister);
 
+        checkme = (CheckBox) findViewById( R.id.rempasswordcheckbox );
+
+        SharedPreferences loginPreferences = getSharedPreferences(SPF_NAME, Context.MODE_PRIVATE);
+        textInputEditTextEmail.setText(loginPreferences.getString(USERNAME, ""));
+        textInputEditTextPassword.setText(loginPreferences.getString(PASSWORD, ""));
     }
 
     /**
@@ -121,6 +136,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             Intent accountsIntent = new Intent(activity, MenuBar.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
+            rememberPass();
             emptyInputEditText();
             startActivity(accountsIntent);
 
@@ -137,5 +153,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void emptyInputEditText() {
         textInputEditTextEmail.setText(null);
         textInputEditTextPassword.setText(null);
+    }
+
+    private void rememberPass()
+    {
+        String userName = textInputEditTextEmail.getText().toString().trim();
+        String userPass = textInputEditTextPassword.getText().toString().trim();
+
+        if (checkme.isChecked())
+        {
+            SharedPreferences loginPreferences = getSharedPreferences(SPF_NAME, Context.MODE_PRIVATE);
+            loginPreferences.edit().putString(USERNAME, userName).putString(PASSWORD, userPass).commit();
+        } else
+        {
+            SharedPreferences loginPreferences = getSharedPreferences(SPF_NAME, Context.MODE_PRIVATE);
+            loginPreferences.edit().clear().commit();
+        }
     }
 }
