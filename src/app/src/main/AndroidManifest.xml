@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.fitness.healthapp">
 
     <!--
@@ -8,6 +9,8 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -32,13 +35,7 @@
         <activity
             android:name=".Activities.MenuBar"
             android:label="@string/title_activity_menu_bar"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -49,11 +46,29 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyDv9uEWjX3He6AXFYVJa1t6rbAoPn-jzTk" />
+        <meta-data android:name="com.google.android.gms.version" />
 
         <activity
             android:name=".Activities.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".Activities.Gpson" />
+        <activity
+            android:name=".Activities.Settings"
+            android:label="@string/action_settings" />
+        <activity
+            android:name=".Activities.setting1"
+            android:label="@string/title_activity_setting1"
+            android:parentActivityName=".Activities.MenuBar"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fitness.healthapp.Activities.MenuBar" />
+        </activity>
+        <activity
+            android:name=".Activities.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

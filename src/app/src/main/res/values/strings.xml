@@ -32,12 +32,9 @@
     <string name="hint_confirm_password">Confirm Password</string>
     <string name="text_register">Register</string>
 
-    <string-array name="number_pick">
-        <item> 1990 </item>
-        <item> 1991 </item>
-        <item> 1996 </item>
-        <item> 1998 </item>
-        <item> 1989 </item>
+    <string-array name="Level_Select">
+        <item> Active </item>
+        <item> Not Active </item>
     </string-array>
 
     <string-array name="date_choice">
@@ -62,4 +59,28 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Permission -->
+    <string name="permission_rationale_location">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
+    <string name="location_permission_denied">This sample requires location permission to enable the \'my location\' layer. Please try again and grant access to use the location.\nIf the permission has been permanently denied, it can be enabled from the System Settings &gt; Apps &gt; \'Google Maps API Demos\'.</string>
+    <string name="permission_required_toast">Location permission is required for this demo.</string>
+
+
+    <string name="title_activity_setting1">Personal Setting</string>
+    <string name="radio_female">Female</string>
+    <string name="radio_male">Male</string>
+    <string name="Height">Height in CM</string>
+    <string name="Weight">Weight in KG</string>
+
+    <string name="very_severely_underweight">Extermely Under Weight</string>
+    <string name="severely_underweight">Under Weight</string>
+    <string name="underweight">Close to Under Weight</string>
+    <string name="normal">Normal</string>
+    <string name="overweight">Over Weight</string>
+    <string name="obese_class_i">Obese Class A</string>
+    <string name="obese_class_ii">Obese Class B</string>
+    <string name="obese_class_iii">Obese Class C</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
 </resources>

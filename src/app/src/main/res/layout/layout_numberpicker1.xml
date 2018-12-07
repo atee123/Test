@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <NumberPicker
+        android:id="@+id/numberPickerHR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/MINText"
+        tools:ignore="RtlCompat" />
+
+    <NumberPicker
+        android:id="@+id/numberPickerMIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="45dp"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/HRText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="74dp"
+        android:layout_toEndOf="@+id/numberPickerMIN"
+        android:gravity="center_vertical"
+        android:text="HR"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/MINText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/HRText"
+        android:layout_marginEnd="44dp"
+        android:gravity="center_vertical"
+        android:text="MIN"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        tools:ignore="RtlCompat,UnknownId" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="208dp"
+        android:text="End Activity after Goal completion."
+        tools:ignore="RtlCompat" />
+</RelativeLayout>

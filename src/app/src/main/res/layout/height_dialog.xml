@@ -17,7 +17,9 @@
         app:layout_constraintEnd_toStartOf="@+id/weightText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/inchText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="149dp" />
 
     <TextView
         android:id="@+id/inch"
@@ -28,10 +30,12 @@
         android:layout_marginEnd="82dp"
         android:text='"'
         app:layout_constraintStart_toEndOf="@+id/weightText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="82dp" />
 
     <EditText
-        android:id="@+id/inchText"
+        android:id="@+id/feetText"
         android:layout_width="52dp"
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
@@ -40,19 +44,21 @@
         android:ems="10"
         android:inputType="number"
         tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="140dp" />
+        tools:layout_editor_absoluteY="140dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="96dp" />
 
     <EditText
-        android:id="@+id/feetText"
+        android:id="@+id/inchText"
         android:layout_width="52dp"
         android:layout_height="45dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/inch"
-        android:layout_marginEnd="86dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/inch"
         android:ems="10"
         android:inputType="number"
         tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="140dp" />
+        tools:layout_editor_absoluteY="140dp"
+        android:layout_toLeftOf="@+id/inch" />
 
 
 </RelativeLayout>
