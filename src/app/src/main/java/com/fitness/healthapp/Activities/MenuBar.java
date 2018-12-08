@@ -385,8 +385,6 @@ public class MenuBar extends AppCompatActivity implements NavigationView.OnNavig
             case R.id.walk:
                 //walk activity
 
-                /*final Dialogs dialogs = new Dialogs();
-                dialogs.setOnItemSelectedListener(new Dialogs.OnItemSelected)*/
                 Toast.makeText( getApplicationContext(), "Walk", Toast.LENGTH_SHORT ).show();
                 final Dialog d = new Dialog(MenuBar.this);
                 d.setContentView( R.layout.layout_walk_alert);
@@ -403,7 +401,12 @@ public class MenuBar extends AppCompatActivity implements NavigationView.OnNavig
                         final Dialog dialog = new Dialog( MenuBar.this );
 
                         dialog.setContentView( R.layout.layout_timepicker );
+
+
                         dialog.show();
+
+
+
                     }
                 } );
 

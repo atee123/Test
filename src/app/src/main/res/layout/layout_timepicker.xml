@@ -5,60 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<TimePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </TimePicker>-->
-
-    <NumberPicker
-        android:id="@+id/numberPickerKM"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/DotText"
-        tools:ignore="RtlCompat" />
+        android:orientation="vertical">
 
-    <NumberPicker
-        android:id="@+id/numberPickerM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/DotText"
-        tools:ignore="RtlCompat" />
+        <TimePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/setTime">
 
-    <TextView
-        android:id="@+id/DotText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-        android:gravity="center_vertical"
-        android:text="."
-        android:textAlignment="center"
-        android:textSize="50dp" />
+        </TimePicker>
 
-    <TextView
-        android:id="@+id/KMText"
-        android:layout_width="53dp"
-        android:layout_height="46dp"
-        android:layout_alignBottom="@+id/DotText"
-        android:layout_toEndOf="@+id/numberPickerKM"
-        android:gravity="center_vertical"
-        android:text="Km"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        tools:ignore="RtlCompat" />
+        <CheckBox
+            android:id="@+id/dialog_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="63dp"
+            android:text="End Activity after Goal completion." />
 
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="216dp"
-        android:text="End Activity after Goal completion." />
+    </LinearLayout>
 
 
 </RelativeLayout>

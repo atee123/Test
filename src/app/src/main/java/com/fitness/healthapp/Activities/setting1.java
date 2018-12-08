@@ -134,7 +134,7 @@ public class setting1 extends AppCompatActivity {
                 } );
 
                 d.show();
-                return true;
+                return false;
             }
         } );
     }
@@ -180,7 +180,7 @@ public class setting1 extends AppCompatActivity {
         final Dialog dialog = new Dialog (setting1.this);
 
         dialog.setContentView( R.layout.activity_bmi );
-
+        dialog.setTitle( "Your BMI is " );
         TextView textView = (TextView) dialog.findViewById( R.id.ResultInDialog );
 
         String bmiLabel2 = bmiLabel;
