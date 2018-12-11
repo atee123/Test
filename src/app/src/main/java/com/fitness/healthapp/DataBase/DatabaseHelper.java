@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.fitness.healthapp.model.User;
+import com.fitness.healthapp.Activities.setting1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_USER_NAME = "user_name";
     private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_USER_PASSWORD = "user_password";
+    private static final String COLUMN_USER_GENDER = "user_gender";
+    private static final String COLUMN_USER_LEVEL = "user_active";
+    private static final String COLUMN_USER_BIRTH = "user_birth";
+    private static final String COLUMN_USER_HEIGHT = "user_height";
+    private static final String COLUMN_USER_WEIGHT = "user_gender";
+    private static final String COLUMN_USER_BMI = "user_bmi";
 
     // create table sql query
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
@@ -34,6 +41,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
+
+    // User Profile Data save
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Constructor

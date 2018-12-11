@@ -27,7 +27,6 @@
         android:id="@+id/radioSex"
         android:layout_width="347dp"
         android:layout_height="62dp"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="MissingConstraints"
@@ -40,6 +39,7 @@
             android:layout_marginLeft="92dp"
             android:layout_marginStart="92dp"
             android:layout_marginTop="20dp"
+            android:onClick="rbclick"
             android:text="@string/radio_male"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -53,6 +53,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
+            android:onClick="rbclick"
             android:text="@string/radio_female"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.161"
@@ -68,10 +69,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="4dp"
         android:text="Active Level"
         app:layout_constraintEnd_toStartOf="@+id/spinner"
-        app:layout_constraintHorizontal_bias="0.315"
+        app:layout_constraintHorizontal_bias="0.309"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioSex" />
 
@@ -79,9 +80,9 @@
         android:id="@+id/spinner"
         android:layout_width="145dp"
         android:layout_height="25dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="4dp"
         android:contentDescription="@string/common_google_play_services_enable_text"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,10 +93,10 @@
         android:layout_width="81dp"
         android:layout_height="28dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="36dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
         android:text="Birth Year"
         app:layout_constraintEnd_toStartOf="@+id/spinner2"
         app:layout_constraintHorizontal_bias="0.277"
@@ -106,9 +107,9 @@
         android:id="@+id/spinner_Birth"
         android:layout_width="139dp"
         android:layout_height="31dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
@@ -120,10 +121,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:text="Matric Units"
         app:layout_constraintEnd_toStartOf="@+id/switch1"
-        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -131,13 +132,13 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_Birth" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/dateofbirth"
         android:layout_width="62dp"
         android:layout_height="22dp"
@@ -150,7 +151,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/spinner_Birth"
         app:layout_constraintEnd_toEndOf="@+id/spinner_Birth"
         app:layout_constraintStart_toStartOf="@+id/spinner_Birth"
-        app:layout_constraintTop_toTopOf="@+id/spinner_Birth" />
+        app:layout_constraintTop_toTopOf="@+id/spinner_Birth" />-->
 
     <EditText
         android:id="@+id/height"
@@ -204,15 +205,31 @@
 
     <TextView
         android:id="@+id/Result"
-        android:textAlignment="center"
-        android:layout_width="136dp"
-        android:layout_height="53dp"
+        android:layout_width="112dp"
+        android:layout_height="29dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Letsbutton" />
+
+    <Button
+        android:id="@+id/save_setting_data"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Save Data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Result" />
 </android.support.constraint.ConstraintLayout>

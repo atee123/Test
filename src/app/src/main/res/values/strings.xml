@@ -45,6 +45,24 @@
         <item> 1989 </item>
     </string-array>
 
+    <string-array name="Select_Birth">
+        <item> 1980 </item>
+        <item> 1981 </item>
+        <item> 1982 </item>
+        <item> 1983 </item>
+        <item> 1984 </item>
+        <item> 1985 </item>
+        <item> 1986 </item>
+        <item> 1987 </item>
+        <item> 1988 </item>
+        <item> 1987 </item>
+        <item> 1988 </item>
+        <item> 1989 </item>
+        <item> 1990 </item>
+        <item> 1991 </item>
+        <item> 1992 </item>
+    </string-array>
+
     <string name="title_activity_fwr">FWR</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -82,5 +100,22 @@
     <string name="obese_class_ii">Obese Class B</string>
     <string name="obese_class_iii">Obese Class C</string>
     <string name="title_activity_main2">Main2Activity</string>
+
+
+
+        <string name="track">Track Activity</string>
+        <string name="percentage">%1$d%%</string>
+        <string name="bicycle">On a bicycle</string>
+        <string name="foot">On foot</string>
+        <string name="running">Running</string>
+        <string name="still">Still</string>
+        <string name="tilting">Tilting</string>
+        <string name="unknown_activity">Unknown activity</string>
+        <string name="vehicle">In a vehicle</string>
+        <string name="walking">Walking</string>
+    <string name="permission_denied_explanation">Permission was denied, but is leaded for functionality</string>
+    <string name="settings">Setting</string>
+    <string name="permission_rationale">Location Permission is needed for core functionality</string>
+
 
 </resources>

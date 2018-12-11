@@ -2,12 +2,15 @@ package com.fitness.healthapp.Activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Entity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,23 +25,37 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fitness.healthapp.Date;
 import com.fitness.healthapp.R;
 
 import java.util.Arrays;
+import java.util.Calendar;
 
-public class setting1 extends AppCompatActivity {
+public class setting1 extends AppCompatActivity{
 
 
     private Switch aSwitch;
-    private Spinner spinner1;
-    private Spinner spinner2;
-    private Spinner spinner3;
-    private Button button;
+    private Spinner spinner_active, BirthSelection;
+    private Button bmishowButton, saveButton;
     private RadioButton maleButton;
     private RadioButton femaleButton;
+    private RadioButton rb;
     private RadioGroup radioGroup;
-    private TextView yearDisplay, result, result1;
+    private TextView result, result1;
     private EditText height, weight;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String SPINER_ACTIVE = "spinnerActive";
+    public static final String SPINER_BIRTH = "spinnerBirth";
+    public static final String EDIT_TEXT_HEIGHT = "editTextHeight";
+    public static final String EDIT_TEXT_WEIGHT = "editTextWeight";
+    public static final String TEXT = "text";
+    public static final String RADIO_GROUP = "radioGroup";
+    public static final String SWITCH1 = "switch1";
+
+
+    private String text, text1, text2, text3, text4;
+    private boolean switchOnOff;
 
 
 
@@ -50,8 +67,13 @@ public class setting1 extends AppCompatActivity {
         height = (EditText)findViewById( R.id.height );
         weight = (EditText)findViewById( R.id.weight );
         result = (TextView)findViewById( R.id.Result );
-        button = (Button)findViewById( R.id.Letsbutton );
+        bmishowButton = (Button)findViewById( R.id.Letsbutton );
         result1 = (TextView)findViewById( R.id.ResultInDialog );
+        radioGroup = (RadioGroup) findViewById( R.id.radioSex );
+        saveButton = (Button)findViewById( R.id.save_setting_data );
+        aSwitch = (Switch)findViewById( R.id.switch1 );
+
+
 
 
         /*Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
@@ -67,24 +89,26 @@ public class setting1 extends AppCompatActivity {
         } );
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );*/
 
-        genderSelection();
+        //genderSelection();
         levelSpinner();
         selectBirth();
+        showBMI();
+        saveData();
+        loadData();
+        updateViews();
+
         /*selectHeight();
         selectWeight();*/
         //bmiCalculate();
 
-        button.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculateBMI( );
-            }
-        } );
+
+
+
 
     }
     public void levelSpinner(){
 
-        Spinner spinnerlevel = (Spinner) findViewById(R.id.spinner);
+        spinner_active = (Spinner)findViewById( R.id.spinner );
 
 
         String [] mLevelchoice = getResources().getStringArray(R.array.Level_Select);
@@ -93,50 +117,52 @@ public class setting1 extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, mLevelchoice);
 
         profession.setDropDownViewResource (android.R.layout.simple_list_item_1);
-        spinnerlevel.setAdapter(profession);
+        spinner_active.setAdapter(profession);
+
+        //String age = String.valueOf( spinnerlevel.getSelectedItem() );
     }
 
     public void genderSelection(){
 
-        radioGroup = (RadioGroup) findViewById( R.id.radioSex );
+
         maleButton = (RadioButton) findViewById( R.id.radioMale );
         femaleButton = (RadioButton)findViewById( R.id.radioFemale );
 
+        Toast.makeText( getBaseContext(), maleButton.getText(), Toast.LENGTH_LONG ).show();
+        Toast.makeText( getBaseContext(), femaleButton.getText(), Toast.LENGTH_LONG ).show();
+    }
 
+    public void rbclick(View view) {
+        int radiobutton = radioGroup.getCheckedRadioButtonId();
+        rb = (RadioButton) findViewById( radiobutton );
+
+
+        Toast.makeText( getBaseContext(),rb.getText(), Toast.LENGTH_SHORT ).show();
     }
 
     public void selectBirth(){
 
-        spinner1 = (Spinner)findViewById( R.id.spinner_Birth );
-        yearDisplay = (TextView)findViewById( R.id.dateofbirth );
+        BirthSelection = (Spinner)findViewById( R.id.spinner_Birth );
+        String [] mYearchoice = getResources().getStringArray(R.array.Select_Birth);
+        Arrays.sort (mYearchoice, 1, mYearchoice.length);
+        ArrayAdapter<String> profession = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, mYearchoice);
+
+        profession.setDropDownViewResource (android.R.layout.simple_list_item_1);
+        BirthSelection.setAdapter(profession);
+    }
 
 
-        spinner1.setOnTouchListener( new View.OnTouchListener() {
+
+    public void showBMI(){
+
+        bmishowButton.setOnClickListener( new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                //Toast.makeText ( setting1.this, "test", Toast.LENGTH_SHORT );
-                final Dialog d = new Dialog(setting1.this);
-                d.setContentView(R.layout.numberpicker);
-                d.setTitle("Birth Year!");
-                final NumberPicker np = (NumberPicker)d.findViewById(R.id.numberPicker2);
-                np.setMaxValue(1908);
-                np.setMinValue(1900);
-                np.setValue(1905);
-                np.setWrapSelectorWheel(false);
-
-                np.setOnValueChangedListener( new NumberPicker.OnValueChangeListener() {
-
-                    @Override
-                    public void onValueChange(final NumberPicker picker, final int oldVal, final int newVal) {
-                        yearDisplay.setText( "" + newVal);
-                    }
-                } );
-
-                d.show();
-                return false;
+            public void onClick(View v) {
+                calculateBMI( );
             }
         } );
+
     }
 
     public void calculateBMI() {
@@ -208,5 +234,61 @@ public class setting1 extends AppCompatActivity {
                 , MenuBar.class);
         startActivity(intent);
     }
+
+    public void saveData(){
+
+        saveButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                saveInSharedPref();
+            }
+        } );
+    }
+
+    public void saveInSharedPref() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences( SHARED_PREFS, MODE_PRIVATE );
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putBoolean( SWITCH1, aSwitch.isChecked());
+        editor.putString( TEXT, result.getText().toString() );
+        editor.putString( EDIT_TEXT_HEIGHT, height.getText().toString() );
+        editor.putString( EDIT_TEXT_WEIGHT, weight.getText().toString() );
+        /*int selectedPosition = BirthSelection.getSelectedItemPosition();
+        editor.putInt( "selectedPosition", selectedPosition );*/
+
+        editor.commit();
+
+
+
+
+        editor.apply();
+        Toast.makeText( this, "Data Saved", Toast.LENGTH_SHORT ).show();
+
+    }
+
+    public void loadData(){
+
+        SharedPreferences sharedPreferences = getSharedPreferences( SHARED_PREFS, MODE_PRIVATE );
+
+        text = sharedPreferences.getString( TEXT, "" );
+        switchOnOff = sharedPreferences.getBoolean( SWITCH1, false );
+        text1 = sharedPreferences.getString( EDIT_TEXT_HEIGHT, "" );
+        text2 = sharedPreferences.getString( EDIT_TEXT_WEIGHT, "" );
+        BirthSelection.setSelection( sharedPreferences.getInt( "spinnerSelection", 0 ) );
+
+    }
+
+    public void updateViews(){
+
+        result.setText( text );
+        aSwitch.setChecked(switchOnOff);
+        height.setText( text1 );
+        weight.setText( text2 );
+
+
+    }
+
 }
 
