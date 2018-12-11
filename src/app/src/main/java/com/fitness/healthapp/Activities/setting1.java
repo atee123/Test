@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Entity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,15 +33,14 @@ import com.fitness.healthapp.R;
 import java.util.Arrays;
 import java.util.Calendar;
 
-public class setting1 extends AppCompatActivity{
+public class setting1 extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, AdapterView.OnItemSelectedListener{
 
 
     private Switch aSwitch;
-    private Spinner spinner_active, BirthSelection;
+    private Spinner spinner_active, BirthSelection, spinnerZodiac;
     private Button bmishowButton, saveButton;
-    private RadioButton maleButton;
-    private RadioButton femaleButton;
-    private RadioButton rb;
+    private RadioButton male, female, rb;
+    private String gender, spinnerItem, spinnerLevel;
     private RadioGroup radioGroup;
     private TextView result, result1;
     private EditText height, weight;
@@ -50,11 +51,15 @@ public class setting1 extends AppCompatActivity{
     public static final String EDIT_TEXT_HEIGHT = "editTextHeight";
     public static final String EDIT_TEXT_WEIGHT = "editTextWeight";
     public static final String TEXT = "text";
+    public static final String TEXT1 = "text";
     public static final String RADIO_GROUP = "radioGroup";
+    public static final String RADIO_BUTTON = "radioButton";
     public static final String SWITCH1 = "switch1";
+    public static final int CHOICE_ITEM = 0;
 
 
     private String text, text1, text2, text3, text4;
+    private int choice;
     private boolean switchOnOff;
 
 
@@ -69,11 +74,41 @@ public class setting1 extends AppCompatActivity{
         result = (TextView)findViewById( R.id.Result );
         bmishowButton = (Button)findViewById( R.id.Letsbutton );
         result1 = (TextView)findViewById( R.id.ResultInDialog );
-        radioGroup = (RadioGroup) findViewById( R.id.radioSex );
         saveButton = (Button)findViewById( R.id.save_setting_data );
         aSwitch = (Switch)findViewById( R.id.switch1 );
 
+        gender = "";
+        spinnerItem = "";
+        spinnerLevel = "";
 
+
+        //Radio Group Method initilization
+
+        RadioGroup radioSex = (RadioGroup) findViewById(R.id.radioSex);
+        radioSex.setOnCheckedChangeListener(this);
+
+
+        // Spinner Initialization
+
+        BirthSelection = (Spinner) findViewById(R.id.spinner_Birth);
+        // Populate the spinner with data source
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Select_Birth, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        BirthSelection.setAdapter(adapter);
+
+        BirthSelection.setOnItemSelectedListener(this);
+
+
+
+        // spinner 2 initialize
+
+        spinner_active = (Spinner)findViewById( R.id.select_level_spinner );
+
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource( this, R.array.Level_Select, android.R.layout.simple_spinner_item );
+        adapter1.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        spinner_active.setAdapter( adapter1 );
+
+        spinner_active.setOnItemSelectedListener( this );
 
 
         /*Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
@@ -90,8 +125,8 @@ public class setting1 extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );*/
 
         //genderSelection();
-        levelSpinner();
-        selectBirth();
+        //levelSpinner();
+        //selectBirth();
         showBMI();
         saveData();
         loadData();
@@ -108,50 +143,9 @@ public class setting1 extends AppCompatActivity{
     }
     public void levelSpinner(){
 
-        spinner_active = (Spinner)findViewById( R.id.spinner );
 
 
-        String [] mLevelchoice = getResources().getStringArray(R.array.Level_Select);
-        Arrays.sort (mLevelchoice, 1, mLevelchoice.length);
-        ArrayAdapter<String> profession = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, mLevelchoice);
-
-        profession.setDropDownViewResource (android.R.layout.simple_list_item_1);
-        spinner_active.setAdapter(profession);
-
-        //String age = String.valueOf( spinnerlevel.getSelectedItem() );
     }
-
-    public void genderSelection(){
-
-
-        maleButton = (RadioButton) findViewById( R.id.radioMale );
-        femaleButton = (RadioButton)findViewById( R.id.radioFemale );
-
-        Toast.makeText( getBaseContext(), maleButton.getText(), Toast.LENGTH_LONG ).show();
-        Toast.makeText( getBaseContext(), femaleButton.getText(), Toast.LENGTH_LONG ).show();
-    }
-
-    public void rbclick(View view) {
-        int radiobutton = radioGroup.getCheckedRadioButtonId();
-        rb = (RadioButton) findViewById( radiobutton );
-
-
-        Toast.makeText( getBaseContext(),rb.getText(), Toast.LENGTH_SHORT ).show();
-    }
-
-    public void selectBirth(){
-
-        BirthSelection = (Spinner)findViewById( R.id.spinner_Birth );
-        String [] mYearchoice = getResources().getStringArray(R.array.Select_Birth);
-        Arrays.sort (mYearchoice, 1, mYearchoice.length);
-        ArrayAdapter<String> profession = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, mYearchoice);
-
-        profession.setDropDownViewResource (android.R.layout.simple_list_item_1);
-        BirthSelection.setAdapter(profession);
-    }
-
 
 
     public void showBMI(){
@@ -246,6 +240,32 @@ public class setting1 extends AppCompatActivity{
         } );
     }
 
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+        int radioButtonId = radioGroup.getCheckedRadioButtonId();
+        RadioButton radioButton = (RadioButton)radioGroup.findViewById(radioButtonId);
+        gender = radioButton.getText().toString();
+
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        spinnerItem = parent.getItemAtPosition( position ).toString();
+
+        spinnerLevel = parent.getItemAtPosition( position ).toString();
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+
     public void saveInSharedPref() {
 
         SharedPreferences sharedPreferences = getSharedPreferences( SHARED_PREFS, MODE_PRIVATE );
@@ -255,13 +275,9 @@ public class setting1 extends AppCompatActivity{
         editor.putString( TEXT, result.getText().toString() );
         editor.putString( EDIT_TEXT_HEIGHT, height.getText().toString() );
         editor.putString( EDIT_TEXT_WEIGHT, weight.getText().toString() );
-        /*int selectedPosition = BirthSelection.getSelectedItemPosition();
-        editor.putInt( "selectedPosition", selectedPosition );*/
-
-        editor.commit();
-
-
-
+        editor.putString( "gender", gender );
+        editor.putString( "spinnerItem", spinnerItem );
+        editor.putString( "spinnerLevel", spinnerLevel );
 
         editor.apply();
         Toast.makeText( this, "Data Saved", Toast.LENGTH_SHORT ).show();
@@ -271,12 +287,14 @@ public class setting1 extends AppCompatActivity{
     public void loadData(){
 
         SharedPreferences sharedPreferences = getSharedPreferences( SHARED_PREFS, MODE_PRIVATE );
-
         text = sharedPreferences.getString( TEXT, "" );
         switchOnOff = sharedPreferences.getBoolean( SWITCH1, false );
         text1 = sharedPreferences.getString( EDIT_TEXT_HEIGHT, "" );
         text2 = sharedPreferences.getString( EDIT_TEXT_WEIGHT, "" );
-        BirthSelection.setSelection( sharedPreferences.getInt( "spinnerSelection", 0 ) );
+        gender = sharedPreferences.getString( "gender", "" );
+        spinnerItem = sharedPreferences.getString( "spinnerItem", "" );
+        spinnerLevel = sharedPreferences.getString( "spinnerLevel", "" );
+
 
     }
 
@@ -287,8 +305,66 @@ public class setting1 extends AppCompatActivity{
         height.setText( text1 );
         weight.setText( text2 );
 
+        male = (RadioButton)findViewById( R.id.radioMale );
+        female = (RadioButton)findViewById( R.id.radioFemale );
+
+        if(gender.equals( "Male" )){
+            male.setChecked( true );
+        }
+        else if (gender.equals( "Female" )){
+
+            female.setChecked( true );
+        }
+        else {
+
+            male.setChecked( false );
+            female.setChecked( false );
+        }
+
+
+        Resources resources1 = getResources();
+
+        String[] LevelArray = resources1.getStringArray( R.array.Level_Select );
+
+        for(int j = 0; j < LevelArray.length; j++){
+
+            if(LevelArray[j].equals(spinnerLevel)){
+
+                ((Spinner)findViewById(R.id.select_level_spinner)).setSelection(j);
+
+            }
+
+        }
+
+        Resources resources = getResources();
+
+        String[] BirthArray = resources.getStringArray( R.array.Select_Birth );
+
+        for(int i = 0; i < BirthArray.length; i++){
+
+            if(BirthArray[i].equals(spinnerItem)){
+
+                ((Spinner)findViewById(R.id.spinner_Birth)).setSelection(i);
+
+            }
+
+        }
+
+
+
+
+
+
 
     }
+
+
+
+
+
+
+
+
 
 }
 
