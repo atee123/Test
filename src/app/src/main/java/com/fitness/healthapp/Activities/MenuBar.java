@@ -101,24 +101,16 @@ public class MenuBar extends AppCompatActivity implements NavigationView.OnNavig
     private TextView gps_status, step_show;
     private Context mContext;
     private static String mWorkingTask;
-    private Switch aSwitch;
-    private Spinner spinner1;
-    private Spinner spinner2;
-    private Spinner spinner3;
-    private Button button;
-    private RadioButton maleButton;
-    private RadioButton femaleButton;
-    private RadioGroup radioGroup;
-    private TextView result, result1;
-    private EditText height, weight;
     private ActivityRecognitionClient mActivityRecognitionClient;
     private ActivitiesAdapter mAdapter;
     private StepDetector simpleStepDetector;
     private SensorManager sensorManager;
     private Sensor accel;
-    private static final String TEXT_NUM_STEPS = "Number of Steps: ";
+    private static final String TEXT_NUM_STEPS = "";
     private int numSteps;
 
+    public static final String SHARED_PREFERNCE = "sharedPrefrenc";
+    public static final String GENDER_SELECT = "genderSelect";
 
 
     public static final String DETECTED_ACTIVITY = ".DETECTED_ACTIVITY";
@@ -128,13 +120,6 @@ public class MenuBar extends AppCompatActivity implements NavigationView.OnNavig
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_menu_bar );
-        height = (EditText)findViewById(R.id.height);
-        weight = (EditText)findViewById( R.id.weight );
-        result = (TextView)findViewById( R.id.Result );
-        button = (Button)findViewById( R.id.Letsbutton );
-        result1 = (TextView)findViewById( R.id.ResultInDialog );
-        maleButton = (RadioButton) findViewById(R.id.radioMale);
-        femaleButton = (RadioButton)findViewById( R.id.radioFemale );
         step_show = (TextView)findViewById( R.id.stepsNumber );
 
 
@@ -214,6 +199,7 @@ public class MenuBar extends AppCompatActivity implements NavigationView.OnNavig
 
         // select activity
         selectActivity();
+        getDatafromsetting();
     }
 
     //Method to update GPS status text
@@ -841,18 +827,30 @@ public class MenuBar extends AppCompatActivity implements NavigationView.OnNavig
 
 
     }
-// Steps Count Calculation
+
+    // Get Data From other class
+
+    String GenderValue ;
+    String YearValue;
+    String HeightValue;
+    String WeightValue;
+
+    setting1 GetData = new setting1();
+
+    public void getDatafromsetting(){
 
 
+        GetData.loadData( this );
+        GenderValue = setting1.gender;
+        YearValue = setting1.spinnerItem;
+        HeightValue = setting1.HeightShared;
+        WeightValue = setting1.WeightShared;
+
+        Toast.makeText( getApplicationContext(), "Gender: = " + GenderValue + YearValue, Toast.LENGTH_LONG ).show();
+        Toast.makeText( getApplicationContext(), "Gender: = " + HeightValue + WeightValue, Toast.LENGTH_LONG ).show();
 
 
-
-
-
-
-
-
-
+    }
 
 
 // Calories Burned Calculation here..
@@ -960,6 +958,6 @@ public class MenuBar extends AppCompatActivity implements NavigationView.OnNavig
     public void step(long timeNs) {
 
         numSteps++;
-        step_show.setText( numSteps );
+        step_show.setText( TEXT_NUM_STEPS + numSteps );
     }
 }

@@ -1,12 +1,14 @@
 package com.fitness.healthapp.Activities;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Entity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -39,26 +41,20 @@ public class setting1 extends AppCompatActivity implements RadioGroup.OnCheckedC
     private Switch aSwitch;
     private Spinner spinner_active, BirthSelection, spinnerZodiac;
     private Button bmishowButton, saveButton;
-    private RadioButton male, female, rb;
-    private String gender, spinnerItem, spinnerLevel;
-    private RadioGroup radioGroup;
+    private RadioButton male, female;
+    public  String spinnerLevel;
     private TextView result, result1;
     private EditText height, weight;
 
+    public static String gender, spinnerItem;
     public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String SPINER_ACTIVE = "spinnerActive";
-    public static final String SPINER_BIRTH = "spinnerBirth";
     public static final String EDIT_TEXT_HEIGHT = "editTextHeight";
     public static final String EDIT_TEXT_WEIGHT = "editTextWeight";
     public static final String TEXT = "text";
-    public static final String TEXT1 = "text";
-    public static final String RADIO_GROUP = "radioGroup";
-    public static final String RADIO_BUTTON = "radioButton";
     public static final String SWITCH1 = "switch1";
-    public static final int CHOICE_ITEM = 0;
 
 
-    private String text, text1, text2, text3, text4;
+    public static String BMIResult, HeightShared, WeightShared;
     private int choice;
     private boolean switchOnOff;
 
@@ -73,7 +69,7 @@ public class setting1 extends AppCompatActivity implements RadioGroup.OnCheckedC
         weight = (EditText)findViewById( R.id.weight );
         result = (TextView)findViewById( R.id.Result );
         bmishowButton = (Button)findViewById( R.id.Letsbutton );
-        result1 = (TextView)findViewById( R.id.ResultInDialog );
+        //result1 = (TextView)findViewById( R.id.ResultInDialog );
         saveButton = (Button)findViewById( R.id.save_setting_data );
         aSwitch = (Switch)findViewById( R.id.switch1 );
 
@@ -129,7 +125,7 @@ public class setting1 extends AppCompatActivity implements RadioGroup.OnCheckedC
         //selectBirth();
         showBMI();
         saveData();
-        loadData();
+        loadData(getApplicationContext());
         updateViews();
 
         /*selectHeight();
@@ -235,7 +231,7 @@ public class setting1 extends AppCompatActivity implements RadioGroup.OnCheckedC
             @Override
             public void onClick(View v) {
 
-                saveInSharedPref();
+                saveInSharedPref(getApplicationContext());
             }
         } );
     }
@@ -266,10 +262,14 @@ public class setting1 extends AppCompatActivity implements RadioGroup.OnCheckedC
     }
 
 
-    public void saveInSharedPref() {
+    public void saveInSharedPref(Context context) {
 
         SharedPreferences sharedPreferences = getSharedPreferences( SHARED_PREFS, MODE_PRIVATE );
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
+        /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences( this );
+        SharedPreferences.Editor editor = preferences.edit();*/
 
         editor.putBoolean( SWITCH1, aSwitch.isChecked());
         editor.putString( TEXT, result.getText().toString() );
@@ -284,26 +284,26 @@ public class setting1 extends AppCompatActivity implements RadioGroup.OnCheckedC
 
     }
 
-    public void loadData(){
+    public void loadData(Context context){
 
-        SharedPreferences sharedPreferences = getSharedPreferences( SHARED_PREFS, MODE_PRIVATE );
-        text = sharedPreferences.getString( TEXT, "" );
-        switchOnOff = sharedPreferences.getBoolean( SWITCH1, false );
-        text1 = sharedPreferences.getString( EDIT_TEXT_HEIGHT, "" );
-        text2 = sharedPreferences.getString( EDIT_TEXT_WEIGHT, "" );
-        gender = sharedPreferences.getString( "gender", "" );
-        spinnerItem = sharedPreferences.getString( "spinnerItem", "" );
-        spinnerLevel = sharedPreferences.getString( "spinnerLevel", "" );
+        SharedPreferences preferences = context.getSharedPreferences( SHARED_PREFS, MODE_PRIVATE );
+        BMIResult = preferences.getString( TEXT, "" );
+        switchOnOff = preferences.getBoolean( SWITCH1, false );
+        HeightShared = preferences.getString( EDIT_TEXT_HEIGHT, "" );
+        WeightShared = preferences.getString( EDIT_TEXT_WEIGHT, "" );
+        gender = preferences.getString( "gender", "" );
+        spinnerItem = preferences.getString( "spinnerItem", "" );
+        spinnerLevel = preferences.getString( "spinnerLevel", "" );
 
 
     }
 
     public void updateViews(){
 
-        result.setText( text );
+        result.setText( BMIResult );
         aSwitch.setChecked(switchOnOff);
-        height.setText( text1 );
-        weight.setText( text2 );
+        height.setText( HeightShared );
+        weight.setText( WeightShared );
 
         male = (RadioButton)findViewById( R.id.radioMale );
         female = (RadioButton)findViewById( R.id.radioFemale );
